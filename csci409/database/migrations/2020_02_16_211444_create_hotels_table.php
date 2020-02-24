@@ -13,10 +13,15 @@ class CreateHotelsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('location');
+            $table->string('address_1');
+            $table->string('address_2');
+            $table->string('city')->nullable();
+            $table->string('state');
+            $table->string('zip');
             $table->string('description');
             $table->string('image');
             $table->timestamps();
