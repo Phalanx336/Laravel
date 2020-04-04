@@ -19,6 +19,10 @@ Route::get('hotels', function () {
     return '/hotels route';
 });
 
+Route::get('/hotels/create', HotelsController (create) {});
+
+Route::post('/hotels/store', HotelsController (store) {});
+
 route::group(['prefix'=>'reservations'], function(){
     route::get('/',function(){return "Showing users homepage";});
     route::get('reservations',function(){return "Showing users reservations";});
