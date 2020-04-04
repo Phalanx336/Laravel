@@ -15,24 +15,16 @@ Route::get('/', function () {
     return '/route';
 });
 
-Route::get('hotels', function () {
-    return '/hotels route';
-});
+Route::get('/hotels','HotelController@index');
 
 Route::get('/hotels/create', HotelsController (create) {});
 
 Route::post('/hotels/store', HotelsController (store) {});
 
-route::group(['prefix'=>'reservations'], function(){
-    route::get('/',function(){return "Showing users homepage";});
-    route::get('reservations',function(){return "Showing users reservations";});
-    route::get('reservations/{id}',function(){return "Showing reservation id";});
-    route::get('reservations/{id}/edit',function(){return "Showing edit form for reservation id";});
-
-    route::post('reservations',function(){return "Creating reservation";});
-
-    route::put('reservations/{id}',function(){return "Updating reservation id";});
-
-    route::delete('reservations/{id}',function(){return "deleting reservation id";});
+Route::group(['prefix' => 'dashboard'], function() {
+    Route::get('/', function(){
+        return '/dashboard route';
+    });
+    Route::get('reservations/create/{id}', 'ReservationController@create');
+    Route::resource('reservations', 'ReservationController')->except('create');
 });
-
